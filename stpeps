@@ -1,0 +1,55 @@
+# MyHadoop
+hadoop configarations
+
+HTTPS://WWW.YOUTUBE.COM/WATCH?V=3YWCLUE1ALI
+
+
+HADOOP 2 INSTALLATION ON WINDOWS
+MAY 31, 2016 ADMIN
+Hadoop 2 Installation on Windows  without “cygwin”
+Hadoop2 recent release supports windows installation it includes all cmd file for configurations steps to follow
+Click here for VIDEO
+Step 1 : You need hadoop win utils Click here to download
+Step 2: Download Java 1.7 for windows and set the Path in Environment .
+Step 3:  Extract the zip folder and all copy all files in to HADOOP_HOME/bin
+Step 4:Create a folder winutils/bin and place the winutil (Find the winutil from step 1)application
+Step 5: Set the following in Environment path in windows(refer video find the link on top)
+HADOOP_HOME
+HADOOP_PATH
+JAVA_HOME
+Step 6 : Download hadoop 2 tar file and extract it and do the following configuration.
+Open the below files from HADOOP_HOME/etc/hadoop
+core-site.xml
+<property> <name>fs.default.name</name> <value>hdfs://localhost:50000</value> </property>
+mapred-site.xml
+<property>
+<name>mapreduce.framework.name</name>
+<value>yarn</value>
+</property>
+hdfs-site.xml
+<property> <name>dfs.namenode.name.dir</name> <value>file:///D:/hadoop-2.6.0/hadoop2-dir/namenode-dir</value> </property>
+<property> <name>dfs.datanode.data.dir</name> <value>file:///D:/hadoop-2.6.0/hadoop2-dir/datanode-dir</value> </property>
+yarn-site.xml
+<property>
+<name>yarn.nodemanager.aux-services</name> <value>mapreduce_shuffle</value>
+</property>
+<property>
+<name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name> <value>org.apache.hadoop.mapred.ShuffleHandler</value> </property>
+hadoop-env.cmd
+set JAVA_HOME=<your path >
+set HADOOP_PREFIX=D:\hadoop-2.6.0 set HADOOP_CONF_DIR=%HADOOP_PREFIX%\etc\hadoop set YARN_CONF_DIR=%HADOOP_CONF_DIR% set PATH=%PATH%;%HADOOP_PREFIX%\bin
+mapred-env.cmd
+set JAVA_HOME=<your path >
+yarn-env.cmd
+set JAVA_HOME=<your path >
+Step 7:
+Format the hadoop
+Open the command prompt and change the directory to
+HADOOP_HOME/bin
+Then type
+hadoop namenode -format
+Step 8:
+Start the hadoop Daemons 
+start-all.cmd
+Then use jps(java process status command to check all daemons )
+
